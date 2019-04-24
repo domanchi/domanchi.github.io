@@ -1,3 +1,4 @@
+@import "modules/animations";
 @import "modules/colors";
 @import "modules/layout";
 @import "modules/overlay";
@@ -23,19 +24,64 @@
         }
     }
 
-    .banner .carousel {
-        width: 100%;
-    }
-
-    .banner .carousel .carousel-indicators {
-        bottom: -150%;
-    }
-
     .banner h1 {
         display: inline;
 
         color: $white;
         font-weight: 700;
         font-size: 5rem;
+        
+        //  This is *essential* so the words don't break and produce jerky animations.
+        white-space: nowrap;
+    }
+}
+
+.banner .carousel {
+    width: 100%;
+
+    .carousel-indicators {
+        bottom: -150%;
+    }
+
+    .carousel-item-wrapper {
+        height: 103px;
+        display: inline-block;
+
+        position: relative;
+
+        overflow: hidden;
+    }
+
+    //  Display the line to look as if it was being typed.
+    .carousel-item-wrapper:after {
+        width: 2px;
+        height: 100%;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        content: "";
+        background-color: $white;
+
+        @include animation(cd-pulse 2s infinite);
+    }
+}
+
+//  Source: https://github.com/CodyHouse/animated-headline
+@include keyframes(cd-pulse) {
+    0% {
+        @include transform(scale(0.8));
+        opacity: 0.6;
+    }
+
+    50% {
+        @include transform(scale(0.75));
+        opacity: 0.2;
+    }
+
+    100% {
+        @include transform(scale(0.8));
+        opacity: 0.6;
     }
 }
