@@ -1,0 +1,25 @@
+/**
+ * Source: https://css-tricks.com/centering-css-complete-guide/
+ */
+ @mixin centerVerticalAndHorizontal() {
+    //  Need to define height and width
+    position: absolute;
+    margin:   auto;
+    top:      0;
+    left:     0;
+    right:    0;
+    bottom:   0;
+}
+
+@mixin centerHorizontally() {
+    display: block;
+    margin: 0 auto;
+}
+
+@mixin centerVertically() {
+    //  Need to define height
+    position: absolute;
+    margin:   auto;
+    top:      0;
+    bottom:   0;
+}

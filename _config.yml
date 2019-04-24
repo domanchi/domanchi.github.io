@@ -16,6 +16,5 @@ markdown: kramdown
 theme: jekyll-theme-hacker
 sass:
   style: compressed
-  sass_dir: src/assets/css
 
 google_analytics: UA-132387320-1

@@ -1,0 +1,41 @@
+@import "modules/colors";
+@import "modules/layout";
+@import "modules/overlay";
+
+#splash-page {
+    background: url("../images/splash-page.jpg") no-repeat top scroll;
+    @include dark-overlay(0.8);
+
+    .banner {
+        width: 90%;
+        height: fit-content;
+        @include centerVerticalAndHorizontal();
+
+        top: -14%;
+    }
+
+    .banner .title {
+        width: fit-content;
+        margin: auto;
+
+        h3 {
+            color: $white;
+        }
+    }
+
+    .banner .carousel {
+        width: 100%;
+    }
+
+    .banner .carousel .carousel-indicators {
+        bottom: -150%;
+    }
+
+    .banner h1 {
+        display: inline;
+
+        color: $white;
+        font-weight: 700;
+        font-size: 5rem;
+    }
+}

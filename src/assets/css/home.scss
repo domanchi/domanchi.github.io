@@ -1,0 +1,30 @@
+---
+---
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+section {
+    height: 100%;
+
+    margin: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat";
+}
+
+@import "partials/about";
+@import "partials/blog-snippet";
+@import "partials/contact";
+@import "partials/footer";
+@import "partials/nav";
+@import "partials/splash";

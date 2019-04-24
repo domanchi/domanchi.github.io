@@ -1,0 +1,59 @@
+@import "modules/colors";
+
+header {
+    padding: 0;
+    margin: 0;
+
+    font-family: "Montserrat";
+    border-bottom: 0;
+
+    .navbar-brand {
+        font-size: 1.6rem;
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        right: 5%;
+        top: 12px;
+
+        color: $white;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .navbar-expand-lg .navbar-collapse {
+        flex-flow: row-reverse;
+    }
+
+    .nav-item {
+        list-style: none;
+    }
+
+    .top-nav-collapse {
+        background-color: $backgroundDarkest;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .navbar,
+    .top-nav-collapse {
+        -webkit-transition: background .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out;
+        transition: background .5s ease-in-out;
+    }
+}
+
+header .nav-item.dropdown {
+    .dropdown-menu {
+        background-color: $backgroundDarker;
+    }
+
+    .dropdown-item {
+        color: $lightBlue;
+        text-align: right;
+    }
+
+    .dropdown-item:hover {
+        background-color: $backgroundNormal;
+    }
+}
