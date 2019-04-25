@@ -36,7 +36,7 @@
     }
 }
 
-.banner .carousel {
+#splash-page .banner .carousel {
     width: 100%;
 
     .carousel-indicators {
@@ -68,6 +68,39 @@
     }
 }
 
+#splash-page .btn-wrapper {
+    $buttonSize: 60px;
+
+    width: $buttonSize;
+    margin: auto;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5%;
+
+    a {
+        width: $buttonSize;
+        height: $buttonSize;
+        padding: 14px 0;
+        border-color: $white;
+    }
+
+    a:hover {
+        color: $white;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    a:hover i{
+        @include animation(pulse 1s infinite);
+    }
+
+    a i {
+        margin-left: -2px;
+        font-size: 1.8rem;
+    }
+}
+
 //  Source: https://github.com/CodyHouse/animated-headline
 @include keyframes(cd-pulse) {
     0% {
@@ -83,5 +116,11 @@
     100% {
         @include transform(scale(0.8));
         opacity: 0.6;
+    }
+}
+
+@include keyframes(pulse) {
+    50% {
+        @include transform(scale(1.1));
     }
 }

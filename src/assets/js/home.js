@@ -12,4 +12,18 @@
 
     dynamicallyModifyNavBar();
     $(window).scroll(dynamicallyModifyNavBar);
+
+    //  Implement smooth scrolling
+    $("a.page-scroll").bind("click", (event) => {
+        const anchor = $(event.currentTarget).attr("href");
+        $("html, body").stop().animate(
+            {
+                scrollTop: $(anchor).offset().top,
+            },
+            1500,
+            "easeInOutExpo"
+        );
+
+        event.preventDefault();
+    });
 })();
