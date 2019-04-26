@@ -37,3 +37,27 @@
 	-ms-transform: $transforms;
 	transform: $transforms;
 }
+
+/**************************
+ * Pre-defined animations *
+ **************************/
+@include keyframes(pulse) {
+    50% {
+        @include transform(scale(1.1));
+    }
+}
+
+/**
+ * Source: https://fvsch.com/transition-fade/test5.html
+ */
+@mixin fadeOut($fadeTime) {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s $fadeTime, opacity $fadeTime linear;
+}
+
+@mixin fadeIn($fadeTime) {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity $fadeTime linear;
+}

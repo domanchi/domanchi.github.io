@@ -118,9 +118,3 @@
         opacity: 0.6;
     }
 }
-
-@include keyframes(pulse) {
-    50% {
-        @include transform(scale(1.1));
-    }
-}

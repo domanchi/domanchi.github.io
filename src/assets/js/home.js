@@ -10,19 +10,38 @@
         }
     }
 
-    dynamicallyModifyNavBar();
-    $(window).scroll(dynamicallyModifyNavBar);
+    function toggleBackToTopButton() {
+        if ($(".navbar").offset().top > 300) {
+            $(".back-to-top").removeClass("hidden");
+        } else {
+            $(".back-to-top").addClass("hidden");
+        }
+    }
 
-    //  Implement smooth scrolling
-    $("a.page-scroll").bind("click", (event) => {
-        const anchor = $(event.currentTarget).attr("href");
+    dynamicallyModifyNavBar();
+    toggleBackToTopButton();
+
+    $(window).scroll(() => {
+        dynamicallyModifyNavBar();
+        toggleBackToTopButton();
+    });
+
+    /**
+     * @param {number} location
+     */
+    function smoothScrollTo(location) {
         $("html, body").stop().animate(
             {
-                scrollTop: $(anchor).offset().top,
+                scrollTop: location,
             },
             1500,
             "easeInOutExpo"
         );
+    }
+
+    $("a.page-scroll").bind("click", (event) => {
+        const anchor = $(event.currentTarget).attr("href");
+        smoothScrollTo($(anchor).offset().top);
 
         event.preventDefault();
     });

@@ -1,11 +1,46 @@
 ---
 ---
+@import "modules/animations";
+@import "modules/colors";
+
 section {
     height: 100%;
 
     position: relative;
 
     margin: 0;
+
+    .title h2 {
+        margin-top: 2%;
+
+        font-weight: 700;
+    }
+
+    .title h2:before {
+        width: 25%;
+        height: 1px;
+        margin: auto;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        background: rgba($white, 0.2);
+        content: "";
+    }
+
+    .title h2:after {
+        width: 6%;
+        height: 2px;
+
+        position: absolute;
+        bottom: 0;
+        left: calc(50% - 30px);
+
+        background: rgba(255, 255, 255, 0.6);
+        content: "";
+    }
 }
 
 body,
@@ -42,3 +77,55 @@ a:hover {
 @import "partials/blog-snippet";
 @import "partials/contact";
 @import "partials/splash";
+
+.btn-wrapper.back-to-top {
+    $buttonSize: 50px;
+
+    width: $buttonSize;
+    height: $buttonSize;
+
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+
+    z-index: 2;
+
+    &.hidden {
+        @include fadeOut(0.5s);
+    }
+
+    &:not(.hidden) {
+        @include fadeIn(0.5s);
+    }
+
+    $opacity: 0.2;
+    $opacityHover: 0.8;
+
+    a {
+        width: $buttonSize;
+        height: $buttonSize;
+
+        padding: 6px 0;
+
+        border: 2px solid rgba($white, $opacity);
+    }
+
+    a:hover {
+        color: $white;
+        border: 2px solid rgba($white, $opacityHover);
+    }
+
+    a:focus {
+        box-shadow: unset;
+    }
+
+    a:hover i{
+        @include animation(pulse 1s infinite);
+        opacity: $opacityHover;
+    }
+
+    a i {
+        font-size: 2rem;
+        opacity: $opacity;
+    }
+}

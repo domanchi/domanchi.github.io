@@ -5,38 +5,7 @@
 }
 
 #blog .title {
-    margin-top: 2%;
     margin-bottom: 4%;
-
-    h2 {
-        font-weight: 700;
-    }
-
-    h2:before {
-        width: 25%;
-        height: 1px;
-        margin: auto;
-
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-
-        background: rgba($white, 0.2);
-        content: "";
-    }
-
-    h2:after {
-        width: 6%;
-        height: 2px;
-
-        position: absolute;
-        bottom: 0;
-        left: calc(50% - 30px);
-
-        background: rgba(255, 255, 255, 0.6);
-        content: "";
-    }
 }
 
 #blog .item {
