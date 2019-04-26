@@ -1,0 +1,35 @@
+{% comment %}
+Parameters:
+  title: str;
+  description: str;
+  category: str; categorization for post.
+  date: str; e.g. 04 April 2019
+  image: str; URL for image for the blog post.
+  link: str; link to blog post
+
+  image_classes: str
+{% endcomment %}
+<div class="col-lg-4">
+  <div class="item text-center">
+    <div class="post-img {{ include.image_classes }}">
+      <img src="{{ include.image }}">
+    </div>
+    <div class="content">
+      <div class="tag">
+          {{ include.category }} | {{ include.date }}
+      </div>
+      <h5>
+        <a href="{{ include.link }}">{{ include.title }}</a>
+      </h5>
+      <p>
+        {% if include.description %}
+          {{ include.description }}
+        {% else %}
+          Dolorem ipsum quia dolor consectetur, amet adipisci velit,
+          sed quia non eius numquam modi tempora.
+        {% endif %}
+      </p>
+      <a href="{{ include.link }}" class="read-more">Read More</a>
+    </div>
+  </div>
+</div>

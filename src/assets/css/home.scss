@@ -22,6 +22,10 @@ h6 {
     font-family: "Montserrat";
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 @import "partials/about";
 @import "partials/blog-snippet";
 @import "partials/contact";
