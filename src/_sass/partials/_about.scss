@@ -1,3 +1,7 @@
+@import "modules/colors";
+
 #about {
-    background-color: yellow;
+    .svg svg {
+        fill: $backgroundDarkest;
+    }
 }

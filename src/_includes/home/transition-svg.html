@@ -1,0 +1,22 @@
+{% comment %}
+Parameters:
+  transparent: bool; the background image is textured. To simulate this, we
+    need to use a pattern.
+{% endcomment %}
+<div class="svg">
+  <svg version="1.1" viewBox="0 0 100 102" preserveAspectRatio="none">
+    {% if include.transparent %}
+    <defs>
+      <pattern id="background" patternUnits="userSpaceOnUse" width="100" height="100">
+        <image xlink:href="/assets/images/bkg.png" x="0" y="0" width="100" height="100" />
+      </pattern>
+    </defs>
+    {% endif %}
+    <path
+      d="M0 30 L50 90 L100 30 V100 H0"
+      {% if include.transparent %}
+        fill="url(#background)"
+      {% endif %}
+    ></path>
+  </svg>
+</div>

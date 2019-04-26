@@ -1,7 +1,11 @@
 @import "modules/colors";
 
+#blog {
+    background: $backgroundDarkest;
+}
+
 #blog .title {
-    margin-top: 6%;
+    margin-top: 2%;
     margin-bottom: 4%;
 
     h2 {
