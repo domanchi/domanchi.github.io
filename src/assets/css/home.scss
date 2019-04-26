@@ -1,11 +1,5 @@
 ---
 ---
-html,
-body {
-    height: 100%;
-    width: 100%;
-}
-
 section {
     height: 100%;
 
@@ -47,6 +41,4 @@ a:hover {
 @import "partials/about";
 @import "partials/blog-snippet";
 @import "partials/contact";
-@import "partials/footer";
-@import "partials/nav";
 @import "partials/splash";

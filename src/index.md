@@ -1,9 +1,13 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: home
+title: Home
+layout: default
+scripts:
+  - /assets/js/home.js
+  - /assets/js/splash.js
+styles:
+  - /assets/css/home.css
 ---
-# Hello world!
-
-This is the first text on this page. asdf
+{% include home/splash.html %}
+{% include home/about.html %}
+{% include home/blog.html %}
+{% include home/contact.html %}

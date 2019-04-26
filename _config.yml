@@ -6,9 +6,6 @@
 url: "https://aaronloo.com"
 description: >- # this means to ignore newlines until next key
   aaronloo's personal home page with latest projects, exploits and discoveries.
-social_media:
-  github: domanchi
-  linkedin: aaronloo
 
 # build settings
 source: src/
@@ -18,3 +15,11 @@ sass:
   style: compressed
 
 google_analytics: UA-132387320-1
+
+# Used with Jekyll SEO plugin (comes default with github-pages)
+title: aaronloo.com
+social:
+  name: Aaron Loo
+  links:
+    - https://github.com/domanchi
+    - https://linkedin.com/in/aaronloo/
