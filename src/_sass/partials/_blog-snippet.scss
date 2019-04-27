@@ -1,14 +1,14 @@
 @import "modules/colors";
 
-#blog {
+section.blog {
     background: $backgroundDarkest;
 }
 
-#blog .title {
+section.blog .title {
     margin-bottom: 4%;
 }
 
-#blog .item {
+section.blog .item {
     $borderRadius: 13px;
 
     background-color: $backgroundNormal;

@@ -4,11 +4,24 @@
 @import "modules/colors";
 
 section {
-    height: 100%;
+    //  Overheight is needed, so that anchoring works properly with navbar.
+    //  https://css-tricks.com/hash-tag-links-padding/
+    height: 109%;
 
     position: relative;
 
     margin: 0;
+
+    &:before {
+        $height: 65px;
+
+        display: block;
+        height: $height;
+        margin-top: -$height;
+
+        content: "";
+        visibility: hidden;
+    }
 
     .title h2 {
         margin-top: 2%;
