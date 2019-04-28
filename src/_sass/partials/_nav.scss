@@ -32,7 +32,7 @@ header {
 
     .top-nav-collapse {
         background-color: $backgroundDarkest;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba($white, 0.3);
     }
 
     .navbar,

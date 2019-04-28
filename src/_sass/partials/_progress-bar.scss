@@ -1,0 +1,84 @@
+@import "modules/colors";
+
+$progressColor: $blueLightest;
+$transitionTime: 0.4s;
+
+.progress-bar-wrapper .title-wrapper {
+    width: fit-content;
+    position: relative;
+
+    .title {
+        margin-bottom: 2px;
+
+        color: $white;
+        font-size: 14px;
+    }
+
+    .title b {
+        color: $peach;
+    }
+
+    a {
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        top: 0;
+    }
+}
+
+.progress-bar-wrapper .progress {
+    height: 6px;
+
+    background-color: $backgroundNormal;
+
+    .progress-bar {
+        width: 0%;  //  need to set width, so transition would work
+
+        background-color: $backgroundNormal;
+        background-image: linear-gradient(
+            to right,
+            rgba($progressColor, 0.2),
+            rgba($progressColor, 0.7)
+        );
+        border-radius: 10px;
+
+        transition: width $transitionTime linear;
+    }
+}
+
+.progress-bar-wrapper .segments-wrapper {
+    position: relative;
+
+    .segments {
+        width: 100%;
+
+        position: absolute;
+        top: -2px;
+    }
+
+    .segments .segment {
+        $size: 10px;
+
+        width: $size;
+        height: $size;
+
+        position: absolute;
+
+        content: "";
+        background-color: $backgroundLighter;
+        border-radius: 50%;
+
+        &.filled {
+            background-color: rgba($progressColor, 0.7);
+            transition: background-color $transitionTime linear;
+        }
+
+        a {
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+        }
+    }
+}

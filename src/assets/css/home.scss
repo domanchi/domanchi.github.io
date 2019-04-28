@@ -86,11 +86,12 @@ a:hover {
     }
 }
 
-@import "partials/about";
-@import "partials/blog-snippet";
-@import "partials/contact";
-@import "partials/splash";
+@import "partials/home/about";
+@import "partials/home/blog";
+@import "partials/home/contact";
+@import "partials/home/splash";
 @import "partials/popover";
+@import "partials/progress-bar";
 
 .btn-wrapper.back-to-top {
     $buttonSize: 50px;
