@@ -1,3 +1,42 @@
+@import "modules/colors";
+
 #contact {
-    background-color: green;
+    height: 80%;
+
+    .container {
+        height: 100%;
+    }
+
+    .title {
+        margin-top: 4%;
+        margin-bottom: 4%;
+    }
+
+    .title h2:after {
+        width: 8%;
+
+        left: calc(50% - 22px);
+    }
+
+    .message-container {
+        height: 29%;
+    }
+
+    .message {
+        text-align: center;
+    }
+}
+
+#contact .icons {
+    text-align: center;
+
+    a {
+        width: 64px;
+        height: 64px;
+
+        display: inline-flex;
+        flex-direction: row;
+
+        margin: 0 10px;
+    }
 }
