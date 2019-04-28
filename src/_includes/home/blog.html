@@ -15,10 +15,14 @@
       {% for post in posts limit:3 %}
         {% assign date = post.date | date: "%b %-d, %Y" %}
         {%
+          assign category = post.category
+          | replace: "-", " "
+        %}
+        {%
           include home/blog-tile.html
             title=post.title
             description=post.description
-            category=post.categories
+            category=category
             date=date
             image=post.image
             link=post.url

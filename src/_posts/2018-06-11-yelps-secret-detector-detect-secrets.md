@@ -6,7 +6,7 @@ description: >-
     <a href="https://github.com/Yelp/detect-secrets">detect-secrets</a>
     framework: a tool designed to keep secrets out of enterprise codebases.
 image: /assets/images/blog/2018-06-11-yelp.png
-categories: "Security"
+category: Security
 tags:
     - open source
     - credentials management

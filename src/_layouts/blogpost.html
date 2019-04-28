@@ -8,7 +8,18 @@ styles:
     <div class="row">
       <div class="wrapper col-md-10">
         <h1 class="title">{{ page.title }}</h1>
-        <p class="date">{{ page.date | date: "%B %-d, %Y" }}</p>
+        <p class="date">
+          {% capture time_estimate %}
+            {% include reading-time.html %}
+          {% endcapture %}
+          {% assign time_estimate = time_estimate | strip %}
+
+          {{ page.date | date: "%B %-d, %Y" }}
+
+          {% if time_estimate != empty %}
+            · {{ time_estimate }}
+          {% endif %}
+        </p>
         <article>
           {{ content }}
         </article>
