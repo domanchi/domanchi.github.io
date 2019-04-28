@@ -1,0 +1,74 @@
+@import "modules/colors";
+
+.popover {
+    width: 500px;
+
+    border-color: $backgroundLighter;
+    background-color: $backgroundLightest;
+
+    b {
+        color: $peach;
+    }
+
+    .popover-header,
+    .popover-body {
+        background-color: $backgroundNormal;
+        font-family: "Montserrat";
+    }
+
+    .popover-header {
+        margin-bottom: 0;
+        border-bottom: 0;
+    }
+
+    .popover-body {
+        margin-top: -12px;
+
+        color: $white;
+    }
+
+    &.bs-popover-bottom {
+        //  Arrow's outline
+        .arrow:before {
+            border-bottom-color: $backgroundLightest;
+        }
+
+        //  Arrow's fill
+        .arrow:after {
+            border-bottom-color: $backgroundNormal;
+        }
+
+        //  Line between popover, and the arrow
+        .popover-header:before {
+            border-bottom-color: $backgroundNormal;
+        }
+    }
+
+    &.bs-popover-top {
+        .arrow:before {
+            border-top-color: $backgroundLightest;
+        }
+
+        .arrow:after {
+            border-top-color: $backgroundNormal;
+        }
+
+        .popover-header:before {
+            border-top-color: $backgroundNormal;
+        }
+    }
+
+    &.bs-popover-left {
+        .arrow:before {
+            border-left-color: $backgroundLightest;
+        }
+
+        .arrow:after {
+            border-left-color: $backgroundNormal;
+        }
+
+        .popover-header:before {
+            border-left-color: $backgroundNormal;
+        }
+    }
+}

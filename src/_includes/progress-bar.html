@@ -1,0 +1,69 @@
+{% comment %}
+Parameters:
+  - title: str
+  - description: str; optional. Displays tooltip for title if provided.
+  - value: int; current value of progress bar
+  - segments: list.
+      format: int:str:str
+              - Location in progress bar (0-100)
+              - Title of popover
+              - description of popover
+{% endcomment %}
+{% for segment in include.segments %}
+  {% assign info = segment | split: ":" %}
+  {% assign value = info[0] | plus: 0 %}
+  {% if value > include.value %}
+    {% break %}
+  {% endif %}
+  {% assign currentLevel = info[1] %}
+{% endfor %}
+<div class="progress-bar-wrapper">
+  <div class="title-wrapper">
+    <p class="title">
+      {{ include.title }}: <b>{{ currentLevel }}</b>
+    </p>
+    {% if include.description %}
+    <a
+      tabindex="0"
+      role="button"
+      data-toggle="popover"
+      data-placement="left"
+      title="{{ include.title }}"
+      data-content="{{ include.description }}"
+    ></a>
+    {% endif %}
+  </div>
+  <div class="segments-wrapper">
+    <div class="segments">
+      {% for segment in include.segments %}
+        {% assign info = segment | split: ":" %}
+        {% assign value = info[0] | plus: 0 %}
+        <div
+          style="margin-left: {{value}}%;"
+          aria-valuenow="{{value}}"
+          class="segment"
+        >
+          <a
+            tabindex="0"
+            role="button"
+            data-toggle="popover"
+            data-placement="top"
+            title="{{ info[1] }}"
+            data-content="{{ info[2] }}"
+          ></a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="progress">
+    <div
+      class="progress-bar"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+
+      aria-valuenow="{{ include.value }}"
+    >
+    </div>
+  </div>
+</div>

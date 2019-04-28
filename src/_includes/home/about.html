@@ -1,3 +1,106 @@
-<section id="about">
+{% comment %}
+There isn't an easy way to create arrays in Liquid.
+https://help.shopify.com/en/themes/liquid/basics/types#initializing-arrays
+
+However, unless we want to use Jekyll's front matter (or site variables) to
+store all the configurations for each progress bar, and pass it down through
+the stack, we'll just have to use split to handle it.
+{% endcomment %}
+{%
+  assign fullStackDevelopmentSegments = ""
+  | append: "25:Rookie:Knows <b>either</b> frontend or backend development well. Dabbles in other parts of the stack with significant assistance from documentation.;"
+  | append: "50:Practitioner:Familiar with <b>both frontend and backend development</b>. Occasionally makes changes further up the stack (e.g. mobile clients, UX) or lower down the stack (e.g. infrastructure management, core middleware);"
+  | append: "75:Adept:Large codebases you author are impeccably organized, and your quality of code <b>sets examples for other junior developers</b>. Can quickly pick up new technologies/frameworks at all levels of the stack.;"
+  | append: "99:Guru:Malcolm Gladwell's <i>Maven</i> -- <b>knows the intricacies of all parts of the stack</b>. Able to fluidly transition between configuring enterprise infrastructure and building a cross-browser compatible styleguide for responsive UX.;"
+  | split: ";"
+%}
+{%
+  assign systemDesignSegments = ""
+  | append: "25:Apprentice:Designs <b>robust system strictly within team's domain</b>. Addresses monitoring, data collection, scalability and performance concerns.;"
+  | append: "50:Experienced:<b>Builds complicated systems</b>, with multiple moving components, external dependencies, and <b>spans across multiple teams</b>.;"
+  | append: "75:Chief Architect:Significantly improves <b>company-wide core infrastructure</b>, that is relied upon by engineers and executives alike.;"
+  | append: "99:Industry Leader:Authors RFCs that have been <b>implemented across multiple companies</b>.;"
+  | split: ";"
+%}
+{%
+  assign processOptimizationSegments = ""
+  | append: "25:Code Wizard:Writes custom tooling to optimize own productivity, and <b>accelerate own development speed</b>.;"
+  | append: "50:Team Player:Implements processes to <b>increase overall team efficiency</b> and remove redundancies.;"
+  | append: "75:Organization Steward:Rolls out <b>improved processes across the entire organization</b>, champions change, and identifies/triages blockers.;"
+  | append: "99:Company Catalyst:Develops resilient organizational structures, to better achieve business goals. Creates company-wide policy to empower organization units. <b>Directly accountable to shareholders</b>.;"
+  | split: ";"
+%}
+{%
+  assign visionaryInsightSegments = ""
+  | append: "25:Tech Lead:Plans <b>technical roadmap for team</b> to meet business objectives <b>on a quarterly basis</b>.;"
+  | append: "50:Front Line Manager:<b>Manages succession pipeline</b> and redundancy planning for team. Provides technical guidance for <b>cross-team projects for the next year</b>.;"
+  | append: "75:Distinguished Director:Coordinates resources to <b>prioritize key investments/trade-offs for the organization</b>, to maximize business value <b>over the next three years</b>.;"
+  | append: "99:Big Chief:Guides company direction by <b>setting company-wide goals</b> and managing budgets, to meet industry trends <b>for the next five years</b>.;"
+  | split: ";"
+%}
+<section class="about" id="about">
+  <div class="container">
+    <div class="row title-container">
+      <div class="col-12 title text-center">
+        <h2>About Me</h2>
+      </div>
+    </div>
+    <div class="row info-wrapper">
+        <div class="col-md-4 col-sm-12">
+          <div class="photo-border">
+            <div class="photo-wrapper">
+              <div class="photo">
+                <img src="/assets/images/me.jpg" />
+              </div>
+              <div class="badge-image">
+                <img src="/assets/images/badge-non-gmo.jpg" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-7 col-sm-12">
+          <div class="info">
+            <h3 class="name">I'm Aaron Loo</h3>
+            <div class="tagline">Modern Day Alchemist</div>
+            <p class="blurb">
+              Traditional alchemists involve themselves with transforming ordinary metals into
+              precious gold. In much the same way, I specialize in <b>transmuting abstract ideas</b>
+              into actionable, <b>revenue-driving results</b>, and empowering my team to do the same.
+            </p>
+            <div class="skills">
+              {%
+                include progress-bar.html
+                title="Full-Stack Development"
+                description="This is a measure of <b>breadth of knowledge</b>. How much technical detail do you know? How fluent is your transition between different roles and skillsets?"
+                value=75
+                segments=fullStackDevelopmentSegments
+              %}
+              {%
+                include progress-bar.html
+                title="System Design"
+                description="This is a measure of <b>depth of knowledge</b>. How comfortable are you at handling complicated systems? How much impact do the systems you design provide?"
+                value=60
+                segments=systemDesignSegments
+              %}
+              {%
+                include progress-bar.html
+                title="Process Optimization"
+                description="This is a measure of <b>execution speed</b>, <b>accountability</b> and <b>coordination</b>. How do you empower yourself, and enable others around you to do more with less time?"
+                value=70
+                segments=processOptimizationSegments
+              %}
+              {%
+                include progress-bar.html
+                title="Visionary Insight"
+                description="This is a measure of <b>influence</b> and <b>forecasting ability</b>. How large can you dream? How far can you see? How competent are you at leading a group of people to make those dreams reality?"
+                value=50
+                segments=visionaryInsightSegments
+              %}
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
   {% include home/transition-svg.html %}
 </section>
