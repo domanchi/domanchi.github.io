@@ -7,33 +7,24 @@
     </div>
     <div class="row">
       {%
-        include home/blog-tile.html
-          title="DIY Sonos: Turn Your Raspberry PI into a Home Sound System"
-          description="I play all my favorite tracks from Youtube, Spotify and local file storage from one centralized interface. No subscriptions or Bluetooth necessary."
-          category="Home Automation"
-          date="04 April 2019"
-          image="/assets/images/jukebox.png"
-          image_classes="transparent-background"
-          link="#"
+        assign posts = site.posts
+        | where: "featured", true
+        | sort: "date"
+        | reverse
       %}
-      {%
-        include home/blog-tile.html
-          title="PacMan: Free Online Multiplayer"
-          description="Inspired by <b>PacMan Battle Royale</b>, I introduce this classic arcade game to the 21st century. Fun for the whole family!"
-          category="Gaming"
-          date="27 January 2019"
-          image="/assets/images/pacman.jpg"
-          link="#"
-      %}
-      {%
-        include home/blog-tile.html
-          title="Yelp's Secret Detector: Preventing Secrets in Source Code"
-          description='We open source our <a href="https://github.com/Yelp/detect-secrets">detect-secrets</a> framework: a tool designed to keep secrets out of enterprise codebases.'
-          category="Security"
-          date="11 June 2018"
-          image="/assets/images/yelp.png"
-          link="https://engineeringblog.yelp.com/2018/06/yelps-secret-detector.html"
-      %}
+      {% for post in posts limit:3 %}
+        {% assign date = post.date | date: "%b %-d, %Y" %}
+        {%
+          include home/blog-tile.html
+            title=post.title
+            description=post.description
+            category=post.categories
+            date=date
+            image=post.image
+            link=post.url
+            image_classes=post.image_classes
+        %}
+      {% endfor %}
     </div>
   </div>
   {% include home/transition-svg.html transparent=true %}

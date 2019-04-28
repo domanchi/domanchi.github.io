@@ -4,7 +4,7 @@
 @import "modules/overlay";
 
 #splash-page {
-    background: url("../images/splash-page.jpg") no-repeat top scroll;
+    background: url("../images/home/splash-page.jpg") no-repeat top scroll;
     @include dark-overlay(0.8);
 
     .banner {

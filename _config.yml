@@ -11,8 +11,13 @@ description: >- # this means to ignore newlines until next key
 source: src/
 markdown: kramdown
 theme: jekyll-theme-hacker
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from    # allows custom redirecting with front-matter `redirect_from` key
 sass:
   style: compressed
+permalink: /:categories/:title
 
 google_analytics: UA-132387320-1
 
