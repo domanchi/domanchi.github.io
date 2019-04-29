@@ -8,7 +8,6 @@ description: >- # this means to ignore newlines until next key
   aaronloo's personal home page with latest projects, exploits and discoveries.
 
 # build settings
-source: src/
 markdown: kramdown
 theme: jekyll-theme-hacker
 plugins:
