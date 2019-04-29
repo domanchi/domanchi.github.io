@@ -9,6 +9,10 @@ watch: venv
 watch-fast: venv
 	bundle exec jekyll serve --source docs/ --incremental
 
+.PHONY: test
+test: venv
+	bundle exec rake test
+
 venv:
 	virtualenv ${VENV}
 	./scripts/setup-virtual-gems.sh ${VENV}
