@@ -6,13 +6,16 @@ description: >-
     game to the 21st century, with online multiplayer powered by
     websockets.
 image: /assets/images/blog/2019-01-27-pacman.jpg
+
 category: Gaming
 tags:
     - project
     - javascript
     - websockets
     - socketio
+
 featured: true
+redirect_to: /404
 ---
 Cras hac condimentum Gravida viverra inceptos tempus mauris platea lorem quam mollis egestas est phasellus vestibulum rutrum varius nonummy laoreet ornare tortor eu est laoreet ultrices semper eleifend sit mattis feugiat, auctor sed congue ipsum tortor eleifend risus cras nulla arcu. Urna ac dictumst dignissim interdum fames auctor. Sapien nisl sapien luctus mi venenatis fusce elementum convallis pharetra in pharetra porta dis congue, dapibus lorem cursus accumsan aliquam torquent lorem gravida tortor odio luctus. Mauris lorem imperdiet turpis. Per senectus. Dis porttitor proin penatibus, porta rhoncus eget volutpat. Velit pellentesque nascetur magnis pulvinar vestibulum luctus dui elementum tortor potenti, scelerisque natoque mollis, nam ultrices placerat egestas. Magna. Fames. Duis nascetur tristique tempor posuere dapibus euismod faucibus eros cras penatibus porttitor hymenaeos facilisis litora fames cubilia nisi. Egestas ullamcorper odio pulvinar eros tempus mollis.
 
