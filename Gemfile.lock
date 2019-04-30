@@ -256,7 +256,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  html-proofer
+  html-proofer (~> 3.10.2)
   jekyll-feed (~> 0.6)
   rake
   tzinfo-data

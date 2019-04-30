@@ -17,5 +17,5 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 group :test do
   gem "rake"
-  gem "html-proofer"
+  gem "html-proofer", "~> 3.10.2"
 end

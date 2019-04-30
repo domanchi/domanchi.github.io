@@ -10,6 +10,15 @@ task :test do
             # This is needed, because our links don't end with `.html`, but our raw files do.
             :assume_extension => true,
 
+            # This is needed by Bootstrap dropdowns, and makes the test unnecessarily complain.
+            :allow_hash_href => true,
+
+            :http_status_ignore => [
+                # It looks like LinkedIn blocked htmlproofer, so we need to explicitly ignore
+                # this error code. https://github.com/gjtorikian/html-proofer/issues/336
+                999,
+            ],
+
             # Fails if image is HTTP
             :check_img_http => true,
 
