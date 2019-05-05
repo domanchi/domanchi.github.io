@@ -1,0 +1,26 @@
+{% comment %}
+Parameters:
+  post: post object
+{% endcomment %}
+<div class="row item">
+  <div class="col-lg-6 content">
+    <div class="title-container">
+      <h2 class="title">
+        <a href="{{ include.post.url }}">{{ include.post.title }}</a>
+      </h2>
+      <div class="tag">
+        {% assign date = include.post.date | date: "%b %-d, %Y" %}
+        {%
+          assign category = include.post.category
+          | replace: "-", " "
+        %}
+        {{ category }} | {{ date }}
+      </div>
+    </div>
+    <p>{{ include.post.description }}</p>
+    <p><a href="{{ include.post.url }}">Read More →</a></p>
+  </div>
+  <div class="col-lg-6 post-img {{ include.post.image_classes }}">
+    <img src="{{ include.post.image }}" alt="{{ include.post.title }}">
+  </div>
+</div>

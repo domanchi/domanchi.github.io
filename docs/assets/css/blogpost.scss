@@ -1,6 +1,7 @@
 ---
 ---
 @import "modules/colors";
+@import "modules/layout";
 
 header nav {
     background-color: $backgroundDarkest;
@@ -8,28 +9,102 @@ header nav {
 }
 
 main {
+    $borderRadius: 13px;
+
     margin-top: 5%;
 
-    line-height: 3.6ex;
-    letter-spacing: 0.7px;
+    @include respond-to(small, portrait) {
+        margin-top: 25%;
+    }
+    @include respond-to(medium, landscape) {
+        margin-top: 12%;
+    }
+    @include respond-to(medium, portrait) {
+        margin-top: 15%;
+    }
+    @include respond-to(large, landscape) {
+        margin-top: 7%;
+    }
 
-    .wrapper {
-        padding-top: 2%;
-        padding-left: 3%;
-        padding-right: 5%;
+    .row.item {
+        margin-left: -10px;
+        margin-right: -10px;
+        margin-bottom: 2ex;
+
+        padding: 2ex 1rem;
 
         background-color: $backgroundNormal;
+        border-radius: $borderRadius;
+        border: 2px solid $backgroundDarkest;
 
-        border-radius: 10px;
+        @include respond-to(null, portrait) {
+            padding: 0;
+
+            flex-direction: column-reverse;
+        }
+        @include respond-to(medium, landscape) {
+            flex-direction: column-reverse;
+        }
     }
 
-    .wrapper .title {
-        margin-bottom: 0;
+    .content {
+        @include respond-to(null, portrait) {
+            margin-top: 2ex;
+        }
+        @include respond-to(medium, landscape) {
+            margin-top: 2ex;
+        }
+    }
+
+    .content .title-container {
+        @include respond-to(medium, portrait) {
+            height: 16.5ex;
+        }
+    }
+
+    h2.title {
+        margin-bottom: 0.3ex;
         font-weight: 700;
+        font-size: 1.8rem;
+
+        @include respond-to((small, medium)) {
+            font-size: 1.7rem;
+        }
     }
 
-    .wrapper .date {
+    .tag {
+        margin-bottom: 2ex;
+
         color: $backgroundLightest;
-        font-size: 0.9rem;
+        letter-spacing: 1px;
+
+        @include respond-to(null, portrait) {
+            font-size: 0.95rem;
+        }
+    }
+
+    .post-img {
+        @include respond-to(null, portrait) {
+            height: 24ex;
+        }
+        @include respond-to(medium, landscape) {
+            height: 24ex;
+        }
+
+        img {
+            max-width: 85%;
+            max-height: 105%;
+
+            border: 2px solid $backgroundNormal;
+
+            @include centerVerticalAndHorizontal();
+            @include respond-to(null, portrait) {
+                width: 100%;
+                max-width: 100%;
+
+                border-top-left-radius: $borderRadius;
+                border-top-right-radius: $borderRadius;
+            }
+        }
     }
 }
