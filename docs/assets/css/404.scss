@@ -22,6 +22,10 @@ body {
     img {
         width: 100%;
         margin: auto;
+
+        @include respond-to(large, landscape) {
+            width: 85%;
+        }
     }
 }
 
