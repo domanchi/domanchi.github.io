@@ -1,15 +1,24 @@
 (function() {
     //  Enable tooltips
+    const windowSize = document.documentElement.clientWidth;
     [
         ".progress-bar-wrapper .segment",
         ".progress-bar-wrapper .title-wrapper",
     ].forEach((selector) => {
         $(selector).each((_, item) => {
-            $(item).children("a").popover({
+            const options = {
                 container: item,
                 trigger: "focus hover",
                 html: true,
-            });
+            };
+
+            //  Adjust it such that it's more responsive
+            //  Source: https://stackoverflow.com/a/4601996
+            const a = $(item).children("a");
+            if (a.offset().left > windowSize - 100) {
+                options.placement = "left";
+            }
+            a.popover(options);
         });
     });
 

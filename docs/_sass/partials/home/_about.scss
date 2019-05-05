@@ -5,34 +5,79 @@ section.about {
         height: 100%;
     }
 
-    .svg svg {
-        fill: $backgroundDarkest;
+    .svg {
+        //  This is needed, otherwise the click won't go through for the
+        //  bottom-most progress bar.
+        @include respond-to(small) {
+            z-index: -1;
+        }
+
+        svg {
+            fill: $backgroundDarkest;
+        }
     }
 }
 
 section.about .title-container {
-    height: 21%;
+    height: 18%;
+    @include respond-to(medium, portrait) {
+        height: 16%;
+    }
 
     .title {
         margin-top: 3%;
         margin-bottom: 4%;
+
+        @include respond-to(small) {
+            margin-top: 6%;
+        }
     }
 }
 
 section.about .info-wrapper {
     height: 65%;
 
-    .photo-border {
+    .photo-container {
+        @include respond-to(small) {
+            width: 90%;
+            margin-bottom: 5ex;
+        }
+    }
+
+    .photo-container .photo-border {
         height: 74%;
         position: relative;
     
         border-radius: 5px;
         box-shadow: 0 0 0 2px $backgroundNormal inset;
 
+        @include respond-to(small) {
+            height: 100%;
+        }
+
+        @include respond-to(medium, portrait) {
+            height: 37%;
+        }
+
+        @include respond-to(medium, landscape) {
+            width: 70%;
+            margin: auto;
+        }
+
+        @include respond-to(large, landscape) {
+            height: 68%;
+        }
+
         .photo-wrapper {
             position: relative;
 
             transform: translateY(24px) translateX(24px);
+            @include respond-to(small) {
+                transform: translateY(12px) translateX(12px);
+            }
+            @include respond-to(medium, portrait) {
+                transform: translateY(12px) translateX(12px);
+            }
         }
 
         .badge-image {
@@ -73,6 +118,12 @@ section.about .info-wrapper {
 
         .blurb b {
             color: $peach;
+        }
+
+        .skills {
+            @include respond-to(small) {
+                margin-bottom: 12ex;
+            }
         }
     }
 }

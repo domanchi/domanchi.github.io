@@ -26,6 +26,16 @@
         toggleBackToTopButton();
     });
 
+    $(".navbar-header button").click((event) => {
+        //  This action happens *before* corresponding changes to the navbar.
+        //  Therefore, the state is one-behind.
+        if ($(event.currentTarget).attr("aria-expanded") === "true") {
+            $(".navbar").removeClass("expand");
+        } else {
+            $(".navbar").addClass("expand");
+        }
+    });
+
     /**
      * @param {number} location
      */

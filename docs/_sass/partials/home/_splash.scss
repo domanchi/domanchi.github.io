@@ -6,6 +6,20 @@
 #splash-page {
     background: url("../images/home/splash-page.jpg") no-repeat top scroll;
     @include dark-overlay(0.8);
+    @include respond-to(small) {
+        //  We need to set this, because section is set to `fit-content`
+        //  by default for small screens.
+        height: 109%;
+    }
+    @include respond-to(medium, portrait) {
+        height: 105%;
+    }
+    @include respond-to(medium, landscape) {
+        height: 115%;
+    }
+    @include respond-to(large, landscape) {
+        height: 107%;
+    }
 
     .banner {
         width: 90%;
@@ -21,6 +35,10 @@
 
         h3 {
             color: $white;
+
+            @include respond-to(small, portrait) {
+                font-size: 1.3rem;
+            }
         }
     }
 
@@ -29,8 +47,19 @@
 
         color: $white;
         font-weight: 700;
-        font-size: 5rem;
+        font-size: 2.6rem;
+
+        @include respond-to(small, portrait) {
+            font-size: 1.5rem;
+        }
+        @include respond-to(large) {
+            font-size: 5rem;
+        }
+        @include respond-to(large, landscape) {
+            font-size: 4.2rem;
+        }
         
+
         //  This is *essential* so the words don't break and produce jerky animations.
         white-space: nowrap;
     }
@@ -41,6 +70,13 @@
 
     .carousel-indicators {
         bottom: -150%;
+
+        @include respond-to(small, portrait) {
+            bottom: -200%;
+        }
+        @include respond-to(null, landscape) {
+            bottom: -100%;
+        }
     }
 
     .carousel-item-wrapper {
@@ -50,6 +86,20 @@
         position: relative;
 
         overflow: hidden;
+
+        @include respond-to(small, portrait) {
+            height: 28px;
+        }
+        @include respond-to(medium, portrait) {
+            height: 50px;
+        }
+        @include respond-to(medium, landscape) {
+            height: 54px;
+            margin-top: 6px;
+        }
+        @include respond-to(large, landscape) {
+            height: 89px;
+        }
     }
 
     //  Display the line to look as if it was being typed.
@@ -65,6 +115,10 @@
         background-color: $white;
 
         @include animation(cd-pulse 2s infinite);
+
+        @include respond-to(small, portrait) {
+            right: 8px;
+        }
     }
 }
 

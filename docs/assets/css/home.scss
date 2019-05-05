@@ -2,6 +2,7 @@
 ---
 @import "modules/animations";
 @import "modules/colors";
+@import "modules/layout";
 
 html,
 body {
@@ -13,12 +14,19 @@ section {
     //  https://css-tricks.com/hash-tag-links-padding/
     height: 109%;
 
+    @include respond-to(small) {
+        height: fit-content;
+    }
+    @include respond-to(medium, portrait) {
+        height: 70%;
+    }
+
     position: relative;
 
     margin: 0;
 
     &:before {
-        $height: 65px;
+        $height: 55px;
 
         display: block;
         height: $height;
@@ -48,7 +56,7 @@ section {
         content: "";
     }
 
-    .title h2:after {
+    .title h2::after {
         width: 6%;
         height: 2px;
 
@@ -58,6 +66,23 @@ section {
 
         background: rgba(255, 255, 255, 0.6);
         content: "";
+
+        @include respond-to(small, portrait) {
+            width: 10%;
+            left: calc(50% - 18px);
+        }
+
+        @include respond-to(medium, portrait) {
+            width: 9%;
+        }
+
+        @include respond-to(medium, landscape) {
+            left: calc(50% - 18px);
+        }
+
+        @include respond-to(large, landscape) {
+            left: calc(50% - 22px);
+        }
     }
 }
 

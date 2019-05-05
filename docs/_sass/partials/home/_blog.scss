@@ -1,4 +1,5 @@
 @import "modules/colors";
+@import "modules/layout";
 
 section.blog {
     background: $backgroundDarkest;
@@ -6,6 +7,12 @@ section.blog {
     .svg {
         bottom: -70px;
         z-index: 0;
+    }
+
+    @include respond-to(medium, portrait) {
+        .col-md-6:nth-child(3) {
+            display: none;
+        }
     }
 }
 
@@ -19,6 +26,16 @@ section.blog .item {
     background-color: $backgroundNormal;
     border: 1px solid $backgroundLighter;
     border-radius: $borderRadius;
+
+    @include respond-to(small) {
+        margin-bottom: 4ex;
+    }
+
+    @include respond-to(medium, landscape) {
+        width: 75%;
+        margin: auto;
+        margin-bottom: 4ex;
+    }
 
     .post-img img {
         border-top-left-radius: $borderRadius;
@@ -41,22 +58,57 @@ section.blog .item {
         color: $backgroundLightest;
         font-size: 0.75rem;
         letter-spacing: 1px;
+
+        @include respond-to(small) {
+            font-size: 0.85rem;
+        }
+        @include respond-to(medium, landscape) {
+            font-size: 0.85rem;
+        }
+        @include respond-to(large, landscape) {
+            font-size: 0.68rem;
+        }
     }
 
     .content h5 {
-        margin-bottom: 15px;
+        margin-bottom: 1ex;
 
         $lineHeight: 2.3ex;
         line-height: $lineHeight;
         height: $lineHeight * 3;
+
+        @include respond-to(small) {
+            height: fit-content;
+
+            font-size: 1.5rem;
+        }
+
+        @include respond-to(medium) {
+            font-size: 1.2rem;
+        }
     }
 
     .content p {
         $lineHeight: 3.1ex;
 
+        height: $lineHeight * 5;
+
         font-size: 0.9rem;
         word-spacing: 1px;
         line-height: $lineHeight;
-        height: $lineHeight * 5;
+        
+
+        @include respond-to(small) {
+            height: fit-content;
+            font-size: 1rem;
+        }
+
+        @include respond-to((medium, large)) {
+            height: $lineHeight * 6;
+        }
+
+        @include respond-to(medium, landscape) {
+            height: fit-content;
+        }
     }
 }

@@ -1,7 +1,17 @@
 @import "modules/colors";
 
 #contact {
-    height: 80%;
+    @include respond-to((small, large), portrait) {
+        height: 80%;
+    }
+
+    @include respond-to(medium, portrait) {
+        height: 40%;
+    }
+
+    @include respond-to(large, landscape) {
+        height: 60%;
+    }
 
     .container {
         height: 100%;
@@ -12,14 +22,34 @@
         margin-bottom: 4%;
     }
 
-    .title h2:after {
-        width: 8%;
+    .title h2::after {
+        @include respond-to((medium, large)) {
+            width: 8%;
+        }
 
-        left: calc(50% - 22px);
+        @include respond-to(null, landscape) {
+            width: 7%;
+        }
+
+        @include respond-to(large) {
+            left: calc(50% - 22px);
+        }
     }
 
     .message-container {
         height: 29%;
+
+        @include respond-to(small) {
+            margin-bottom: 7ex;
+        }
+
+        @include respond-to(medium, portrait) {
+            margin-bottom: 3.5ex;
+        }
+
+        @include respond-to(large, landscape) {
+            margin-bottom: 3.5ex;
+        }
     }
 
     .message {
@@ -29,6 +59,10 @@
 
 #contact .icons {
     text-align: center;
+
+    @include respond-to(null, landscape) {
+        margin-bottom: 4ex;
+    }
 
     a {
         width: 64px;

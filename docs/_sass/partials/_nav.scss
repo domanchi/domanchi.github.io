@@ -1,4 +1,5 @@
 @import "modules/colors";
+@import "modules/layout";
 
 header {
     padding: 0;
@@ -41,6 +42,10 @@ header {
         -moz-transition: background .5s ease-in-out;
         transition: background .5s ease-in-out;
     }
+
+    .navbar.expand {
+        background-color: $backgroundDarkest;
+    }
 }
 
 header .nav-item.dropdown {
@@ -51,6 +56,10 @@ header .nav-item.dropdown {
     .dropdown-item {
         color: $blueLightest;
         text-align: right;
+
+        @include respond-to((small, medium)) {
+            text-align: left;
+        }
     }
 
     .dropdown-item:hover {

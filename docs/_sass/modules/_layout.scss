@@ -23,3 +23,90 @@
     top:      0;
     bottom:   0;
 }
+
+/**
+ * Source: https://getbootstrap.com/docs/4.0/layout/overview/
+ * This is mainly copied for optimization: so we can use this during first
+ * paint, and not need to wait for the entire bootstrap CSS to load.
+ *
+ * $media: list. Has values: (small, medium, large)
+ * $orientation: str. Has values: (landscape, portrait)
+ * Example calls:
+ *     //  This will set the background to be red for all sizes up to large.
+ *     .example {
+ *         @include respond-to((small, medium)) {
+ *             background-color: red;
+ *         }
+ *     }
+ *
+ *     //  This will set the background to be red, for only medium screens.
+ *     .example {
+ *         @include respond-to(medium) {
+ *             background-color: red;
+ *         }
+ *     }
+ */
+$widthSmall: 576px;
+$widthMedium: 768px;
+$widthLarge: 992px;
+
+@mixin respond-to($media, $orientation: null) {
+    $lowerBound: null;
+    @if index($media, small) {
+        $lowerBound: null;
+    }
+    @else if index($media, medium) {
+        $lowerBound: $widthSmall;
+    }
+    @else if index($media, large) {
+        $lowerBound: $widthLarge;
+    }
+
+    $upperBound: null;
+    @if index($media, large) {
+        $upperBound: null;
+    }
+    @else if index($media, medium) {
+        $upperBound: $widthLarge;
+    }
+    @else if index($media, small) {
+        $upperBound: $widthMedium;
+    }
+
+    @if ($orientation != null) {
+        @if $lowerBound and $upperBound {
+            @media (min-width: $lowerBound) and
+                (max-width: $upperBound - 0.02) and 
+                (orientation: $orientation) { @content; }
+        }
+        @else if $lowerBound {
+            @media only screen and
+                (min-width: $lowerBound) and
+                (orientation: $orientation) { @content; }
+        }
+        @else if $upperBound {
+            @media only screen and
+                (max-width: $upperBound - 0.02) and
+                (orientation: $orientation) { @content; }
+        }
+        @else {
+            @media only screen and (orientation: $orientation) {
+                @content;
+            }
+        }
+    }
+    @else {
+        @if $lowerBound and $upperBound {
+            @media (min-width: $lowerBound) and
+                (max-width: $upperBound - 0.02) { @content; }
+        }
+        @else if $lowerBound {
+            @media only screen and
+                (min-width: $lowerBound) { @content; }
+        }
+        @else if $upperBound {
+            @media only screen and
+                (max-width: $upperBound - 0.02) { @content; }
+        }
+    }
+}

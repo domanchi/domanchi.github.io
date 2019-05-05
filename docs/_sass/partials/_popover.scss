@@ -71,4 +71,18 @@
             border-left-color: $backgroundNormal;
         }
     }
+
+    &.bs-popover-right {
+        .arrow::before {
+            border-right-color: $backgroundLightest;
+        }
+
+        .arrow::after {
+            border-right-color: $backgroundNormal;
+        }
+
+        .popover-header::before {
+            border-right-color: $backgroundNormal;
+        }
+    }
 }

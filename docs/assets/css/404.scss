@@ -1,13 +1,26 @@
 ---
 ---
+@import "modules/colors";
+@import "modules/layout";
+
 body {
     height: 91%;
+
+    @include respond-to(small, landscape) {
+        //  To get the footer in the right place.
+        position: relative;
+    }
+}
+
+.navbar {
+    background-color: $backgroundDarkest;
 }
 
 .image-container {
     margin-top: 7%;
 
     img {
+        width: 100%;
         margin: auto;
     }
 }
