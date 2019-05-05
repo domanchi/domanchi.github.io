@@ -1,0 +1,27 @@
+---
+---
+
+@import "modules/colors";
+@import "modules/layout";
+
+header nav {
+    background-color: $backgroundDarkest;
+    border-bottom: 1px solid rgba($white, 0.3);
+}
+
+main {
+    margin-top: 5%;
+
+    @include respond-to(small, portrait) {
+        margin-top: 25%;
+    }
+    @include respond-to(medium, landscape) {
+        margin-top: 12%;
+    }
+    @include respond-to(medium, portrait) {
+        margin-top: 15%;
+    }
+    @include respond-to(large, landscape) {
+        margin-top: 7%;
+    }
+}

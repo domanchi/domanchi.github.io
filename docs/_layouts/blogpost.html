@@ -2,6 +2,7 @@
 layout: default
 styles:
   - /assets/css/blogpost.css
+  - /assets/css/content.css
 ---
 <main>
   <div class="container">
@@ -23,6 +24,19 @@ styles:
         <article>
           {{ content }}
         </article>
+      </div>
+    </div>
+    <div class="row">
+      <div class="bio-wrapper col-md-10">
+        <div class="img-wrapper">
+          <img src="/assets/images/profile-pic.jpg">
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            {{ site.biography }}
+          </div>
+          <a href="{{ site.data.navigation.about.link }}">More about the author →</a>
+        </div>
       </div>
     </div>
   </div>

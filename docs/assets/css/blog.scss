@@ -1,0 +1,90 @@
+---
+---
+@import "modules/colors";
+@import "modules/layout";
+
+main {
+    $borderRadius: 13px;
+
+    .row.item {
+        margin-left: -10px;
+        margin-right: -10px;
+        margin-bottom: 2ex;
+
+        padding: 2ex 1rem;
+
+        background-color: $backgroundNormal;
+        border-radius: $borderRadius;
+        border: 2px solid $backgroundDarkest;
+
+        @include respond-to(null, portrait) {
+            padding: 0;
+
+            flex-direction: column-reverse;
+        }
+        @include respond-to(medium, landscape) {
+            flex-direction: column-reverse;
+        }
+    }
+
+    .content {
+        @include respond-to(null, portrait) {
+            margin-top: 2ex;
+        }
+        @include respond-to(medium, landscape) {
+            margin-top: 2ex;
+        }
+    }
+
+    .content .title-container {
+        @include respond-to(medium, portrait) {
+            height: 16.5ex;
+        }
+    }
+
+    h2.title {
+        margin-bottom: 0.3ex;
+        font-weight: 700;
+        font-size: 1.8rem;
+
+        @include respond-to((small, medium)) {
+            font-size: 1.7rem;
+        }
+    }
+
+    .tag {
+        margin-bottom: 2ex;
+
+        color: $backgroundLightest;
+        letter-spacing: 1px;
+
+        @include respond-to(null, portrait) {
+            font-size: 0.95rem;
+        }
+    }
+
+    .post-img {
+        @include respond-to(null, portrait) {
+            height: 24ex;
+        }
+        @include respond-to(medium, landscape) {
+            height: 24ex;
+        }
+
+        img {
+            max-width: 85%;
+            max-height: 105%;
+
+            border: 2px solid $backgroundNormal;
+
+            @include centerVerticalAndHorizontal();
+            @include respond-to(null, portrait) {
+                width: 100%;
+                max-width: 100%;
+
+                border-top-left-radius: $borderRadius;
+                border-top-right-radius: $borderRadius;
+            }
+        }
+    }
+}
