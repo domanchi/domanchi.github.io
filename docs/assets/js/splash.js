@@ -1,5 +1,10 @@
 (function(){
+    //  For some reason, there's a difference between where the carousel starts,
+    //  and the width when it changes. If we don't modify the start padding, it
+    //  won't load the full text.
+    const startPaddingToCursorLine = 150;
     const paddingToCursorLine = 30;
+
     const revealDuration = 1000;
 
     //  This is a pretty hacky workaround, but it is necessary if we want to
@@ -11,7 +16,7 @@
     let lock = false;
 
     $("#banner-carousel .carousel-item.active .carousel-item-wrapper").width(
-        $("#banner-carousel .carousel-item.active h1").width() + paddingToCursorLine
+        $("#banner-carousel .carousel-item.active h1").width() + startPaddingToCursorLine
     );
 
     //  We're attaching a custom animation to the carousel, derived from
