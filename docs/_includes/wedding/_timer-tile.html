@@ -1,0 +1,19 @@
+{% comment %}
+Parameters:
+  - units: str
+{% endcomment %}
+<div class="timer-segment timer__{{ include.units | downcase }}">
+  <div class="timer-segment__value timer-number timer-number--first">
+    <div class="timer-number__top"></div>
+    <div class="timer-number__top-back"><span></span></div>
+    <div class="timer-number__bottom"></div>
+    <div class="timer-number__bottom-back"><span></span></div>
+  </div>
+  <div class="timer-segment__value timer-number timer-number--second">
+    <div class="timer-number__top"></div>
+    <div class="timer-number__top-back"><span></span></div>
+    <div class="timer-number__bottom"></div>
+    <div class="timer-number__bottom-back"><span></span></div>
+  </div>
+  <div class="timer-segment__text">{{include.units | capitalize }}</div>
+</div>

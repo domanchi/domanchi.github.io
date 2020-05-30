@@ -69,7 +69,9 @@ layout: compress
 
     {{ content }}
 
-    {% include footer.html %}
+    {% if page.footer != false %}
+      {% include footer.html %}
+    {% endif %}
 
     <!--Bootstrap JS-->
     <script
