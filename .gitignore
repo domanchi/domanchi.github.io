@@ -3,3 +3,4 @@
 .sw[op]
 _site/**
 venv/**
+.DS_Store
