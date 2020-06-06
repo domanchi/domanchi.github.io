@@ -16,10 +16,10 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 # Patches to mitigate vulnerabilities
-gem "nokogiri", ">= 1.10.4"
+gem "nokogiri", ">= 1.10.8"
 gem "rubyzip", ">= 1.3.0"
 
 group :test do
-  gem "rake"
+  gem "rake", ">= 12.3.3"
   gem "html-proofer", "~> 3.10.2"
 end
