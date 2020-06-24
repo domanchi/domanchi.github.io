@@ -3,9 +3,12 @@ Parameters:
   src:   image source
   alt?   caption
   style? additional CSS
+  parentStyle?
 {% endcomment %}
+<div style="{{include.parentStyle}}">
 <img
   src="{{include.src}}"
   alt="{{include.alt}}"
   style="{{include.style}}"
 />
+</div>
