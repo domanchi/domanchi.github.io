@@ -1,0 +1,12 @@
+@mixin fit-content($attribute) {
+    @if index($attribute, width) {
+        width: fit-content;
+        width: -moz-fit-content;    //  firefox
+    }
+    @else if index($attribute, height) {
+        height: fit-content;
+    }
+    @else {
+        @error "fit-content used with unrecognized attribute.";
+    }
+}
