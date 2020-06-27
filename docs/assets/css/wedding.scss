@@ -1,5 +1,6 @@
 ---
 ---
+@import "modules/colors";
 @import "modules/fonts";
 
 html,
@@ -11,7 +12,16 @@ body {
     display: flex;
     margin: 0;
 
+    //  Remove the background image, so fades look better.
+    background: $backgroundDarkest;
+
+    //  Hide scrollbars.
     overflow-y: hidden;
+    -ms-overflow-style: none;   //  IE and Edge
+    scrollbar-width: none;      //  Firefox
+    &::-webkit-scrollbar {
+        display: none;          //  Chrome, Safari and Opera
+    }
 }
 
 section {
@@ -24,4 +34,5 @@ section {
 }
 
 @import "partials/wedding/landing";
+@import "partials/wedding/book";
 @import "partials/wedding/countdown";

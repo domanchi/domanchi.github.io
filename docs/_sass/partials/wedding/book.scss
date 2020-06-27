@@ -1,0 +1,270 @@
+//  The flipbook was inspired by https://codepen.io/captain_anonym0us/pen/ybVbpv
+@import "modules/colors";
+@import "modules/layout";
+
+$width: 88vw;
+$height: 80vh;
+
+#book {
+    background: $backgroundDarkest;
+
+    .book {
+        transition: opacity 0.4s 0.2s;
+        perspective: 250vw;
+        padding-top: 4rem;
+    }
+
+    .book .pages {
+        width: $width;
+        height: $height;
+
+        position: relative;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        border-radius: 4px;
+    }
+}
+
+#book .book .page {
+    width: $width / 2;
+    height: $height;
+    margin: 0;
+    position: absolute;
+    top: 0;
+
+    transform-origin: 0 0;
+    transition: transform 1.4s;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    user-select: none;
+
+    background: left top no-repeat;
+    background-color: #f0f0f0;
+    background-size: cover;
+
+    &:before {
+        content: '';
+        @include centerVerticalAndHorizontal();
+        margin: unset;
+
+        background: rgba(0, 0, 0, 0);
+        transition: background 0.7s;
+        z-index: 2;
+    }
+
+    &:nth-child(odd) {
+        right: 0;
+        transform: rotateY(0deg);
+        border-radius: 0 4px 4px 0;
+        background-image: linear-gradient(
+            to right, 
+            rgba(0, 0, 0, 0.15) 0%, 
+            rgba(0, 0, 0, 0) 10%
+        );
+        background-position: right top;
+        border-right-style: solid;
+    }
+
+    &:nth-child(odd):before {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    &:nth-child(even) {
+        left: 0;
+
+        transform: rotateY(180deg);
+        transform-origin: 100% 0;
+        border-radius: 4px 0 0 4px;
+        border-color: black;
+        background-image: linear-gradient(
+            to left,
+            rgba(0, 0, 0, 0.12) 0%,
+            rgba(0, 0, 0, 0) 10%
+        );
+        border-left-style: solid;
+    }
+
+    &:nth-child(even):before {
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+//  Flippable pages have a nice little mouse-over effect.
+#book .book .page.flippable {
+    &:nth-child(odd):hover {
+        transform: rotateY(-15deg);
+    }
+
+    &:nth-child(odd):hover:before {
+        background: rgba(0, 0, 0, 0.03);
+    }
+
+    &.flipped:nth-child(even):hover {
+        transform: rotateY(15deg);
+    }
+
+    &.flipped:nth-child(even):hover:before {
+        background: rgba(0, 0, 0, 0.03);
+    }
+}
+
+//  This controls how the pages are turned.
+#book .book .page.flipped {
+    &:nth-child(odd) {
+        transform: rotateY(-180deg);
+    }
+
+    &:nth-child(odd):before {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    &:nth-child(even) {
+        transform: rotateY(0deg);
+    }
+
+    &:nth-child(even):before {
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+#book .book .page.cover {
+    background-color: brown;
+    border: solid #670A0A;
+
+    p {
+        font-size: 5vw;
+        background-color: darkgoldenrod;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        border-radius: 10px;
+        border: solid #670A0A;
+    }
+}
+
+//  Text elements in the book.
+#book .book .page p,
+#book .book .page div {
+    font-family: "MyFirstCrush";
+    font-size: 3vw;
+    text-align: center;
+    color: black;
+}
+
+#book .book .page p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    &.top {
+        margin-top: 2rem;
+    }
+
+    &.left {
+        margin-left: 2rem;
+        left: 2rem;
+        text-align: left;
+    }
+
+    &.right {
+        margin-right: 2rem;
+        right: 0;
+        text-align: right;
+    }
+
+    &.bottom {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 2rem;
+    }
+
+    &.center {
+        height: fit-content;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}
+
+#book .book .page:nth-child(even) p.right {
+    right: 3rem;
+}
+
+#book .book .page div.image {
+    position: absolute;
+
+    &.center {
+        margin: auto;
+        left: 0;
+        right: 0;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    &.image__border--left,
+    &.image__border--left img {
+        border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+        border: 3px solid;
+    }
+
+    &.image__border--right,
+    &.image__border--right img {
+        border-radius: 15px 255px 15px 255px/255px 15px 255px 15px;
+        border: 3px solid;
+    }
+
+    &.image__border--right {
+        transform: rotate(-2deg);
+    }
+
+    &.image__border--left,
+    &.image__border--right {
+        border-color: black;
+    }
+}
+
+//  Inner border
+#book .book .page div.image.inner-border {
+    .inner-border__wrapper {
+        width: 90%;
+        height: 5%;
+        margin-left: 5%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 20px;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .inner-border__text {
+        width: 100%;
+        left: 0;
+        right: 0;
+        font-size: medium;
+        font-weight: 700;
+        position: absolute;
+    }
+
+    .inner-border__text::before,
+    .inner-border__text::after {
+        content: '';
+        width: 5ex;
+        display: inline-block;
+        height: 4px;
+        background: rgba(25, 25, 25, 0.6);
+        vertical-align: middle;
+    }
+
+    .inner-border__text::before {
+        margin-right: 1vw;
+    }
+
+    .inner-border__text::after {
+        margin-left: 1vw;
+    }
+}
