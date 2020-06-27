@@ -128,21 +128,9 @@ const Animations = (() => {
           scrub: true,
           trigger: "#book",
           start: "left left",
-          end: "right right",
+          end: "right right-=50%",
           pin: true,
           pinSpacing: false,
-          onToggle: () => {
-            //  This is a hack to get around the strange padding issue.
-            //  For some reason, even with `pinSpacing` off, when the end is reached,
-            //  #book is set with the `translate3d` attribute with the duration of the
-            //  animations as an offset. As a result, there's a giant padding at the
-            //  end of the presentation (that I can't seem to get rid of).
-            //
-            //  I've narrowed it down to the fact that we're putting the pin on #book
-            //  as compared to `createLandingScene`, but can't get any further than that.
-            //  Due to time constraints, I'm going to hack around this issue.
-            document.querySelector("#book").style.transform = "translate3d(0px, 0px, 0px)";
-          },
         }
       }
     );
@@ -230,36 +218,52 @@ const Animations = (() => {
       )
     });
 
-    timeline.fromTo(
+    let originalOffset = null;
+    gsap.to(
       "#book .pages-container",
       {
-        //  This is the initial value from the first movement.
-        x: "1%",
-      },
-      {
-        //  Move it off-screen, so we can adjust the `transform` attribute on
-        //  the `onToggle` function of the #book pin.
-        x: -1 * Number.parseFloat(getComputedStyle(document.querySelector(".page")).width) - 50,
+        x: -1 * Number.parseFloat(getComputedStyle(document.querySelector("#book .page")).width) / 2,
         scrollTrigger: {
           horizontal: true,
           scrub: true,
           trigger: "#book",
-          start: "right right+=5%",
-          end: "right right-=5%",
+          start: "right right-=60%",
+          end: "right+=5% right-=50%",
+
+          onLeave: () => {
+            //  This is a hack to get around the strange padding issue.
+            //  For some reason, even with `pinSpacing` off, when the end is reached,
+            //  #book is set with the `translate3d` attribute with the duration of the
+            //  animations as an offset. As a result, there's a giant padding at the
+            //  end of the presentation (that I can't seem to get rid of).
+            //
+            //  I've narrowed it down to the fact that we're putting the pin on #book
+            //  as compared to `createLandingScene`, but can't get any further than that.
+            //  Due to time constraints, I'm going to hack around this issue.
+            originalOffset = document.querySelector("#book").style.transform.match(/\d+px/)[0];
+            document.querySelector("#book").style.transform = "translate3d(0px, 0px, 0px)";
+          },
+          onEnterBack: () => {
+            //  Inverse of `onLeave`. Assumes always starts at left.
+            document.querySelector("#book").style.transform = `translate3d(${originalOffset}, 0px, 0px)`;
+          }
+        },
+        startAt: {
+          x: "1%",
         }
       }
-    )
+    );
 
-    //  Blend into countdown background image.
-    .to(
-      "#book",
+    //  Blend into final scene.
+    gsap.to(
+      "#countdown .overlay",
       {
-        background: "linear-gradient(to bottom, #5f9dd7, #5f9dd0, #65a0ce, #6ca0cf, #7caaca, #8eb2bd, #5f849c, #4a7188)",
+        backgroundColor: "rgba(21, 21, 21, 0)",
         scrollTrigger: {
           horizontal: true,
           scrub: true,
-          trigger: "#book",
-          start: "right right+=20%",
+          trigger: "#countdown",
+          start: "left-=5% left",
           end: "right right",
         },
       }
