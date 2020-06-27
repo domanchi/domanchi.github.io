@@ -25,7 +25,7 @@ const Browser = (() => {
       /**
        * @returns {boolean}
        */
-      isCompatibleWithPresentation: async () => {
+      getBrowserCompatibility: async () => {
         //  First, we check whether the dimensions of the screen will make the presentation
         //  look good. This allows us to skip handling multiple screen sizes, and make it
         //  compatible for everyone.
@@ -41,12 +41,17 @@ const Browser = (() => {
         //  1.05 == background movement due to parallax effect.
         const groundWidth = window.innerHeight * 0.47 * dimensions.width / dimensions.height;
         if (groundWidth <= window.innerWidth * 1.05) {
-          return false;
+          return {ok: false, message: "Your screen is too wide for a proper viewing experience."};
         }
 
+        //  Then, check for browsers. As expected, firefox and IE doesn't work as intended.
+        //  Source: https://stackoverflow.com/a/4565120
+        if (!(/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor))) {
+          return {ok: false};
+        }
         //  TODO: Javascript check.
 
-        return true;
+        return {ok: true};
       }
     }
   })();

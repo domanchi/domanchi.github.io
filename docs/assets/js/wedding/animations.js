@@ -36,11 +36,7 @@ const Animations = (() => {
     );
   }
 
-  function createLandingScene() {
-    //  We need to setup the width, because GSAP pinning doesn't magically do this
-    //  for us (unlike ScrollMagic).
-    document.querySelector("#landing").style.width = `${Duration.Title}px`;
-
+  function createScrollIndicator() {
     //  Since the width is changed, we can't place things on the right of the original
     //  viewport (since it will be on the right of the whole image). Therefore, we
     //  set the position manually.
@@ -52,6 +48,12 @@ const Animations = (() => {
     //  Show help if no scroll activity after a period of time.
     setTimeout(displayScrollIndicator, 1500);
     document.addEventListener("scroll", hideScrollIndicator);
+  }
+
+  function createLandingScene() {
+    //  We need to setup the width, because GSAP pinning doesn't magically do this
+    //  for us (unlike ScrollMagic).
+    document.querySelector("#landing").style.width = `${Duration.Title}px`;
 
     //  Setup parallax scrolling for the sky and the ground elements.
     gsap.to(
@@ -298,30 +300,48 @@ const Animations = (() => {
       gsap.registerPlugin(ScrollTrigger);
 
       createLandingScene();
+      createScrollIndicator();
       createBookScene();
     },
 
     /**
      * Run with a barebone presentation (landing => countdown).
      */
-    disable: () => {
-      //  Fix the images on the landing page.
-      for (const component of [".parallax__sky", ".parallax__ground"]) {
-        document.querySelector(`#landing ${component}`).style.backgroundSize = "cover";
+    disable: (errorMessage) => {
+      if (!errorMessage) {
+        //  If no error message, then just disable the entire presentation.
+        //  Hide all other "interactive" sections.
+        document.querySelectorAll("section").forEach((section) => {
+          if (section.id !== "countdown") {
+            section.style.display = "none";
+          }
+        });
+      } else {
+        //  Fix the images on the landing page.
+        for (const component of [".parallax__sky", ".parallax__ground"]) {
+          document.querySelector(`#landing ${component}`).style.backgroundSize = "cover";
+        }
+
+        //  Hide the title text.
+        document.querySelector("#landing .landing__text").style.display = "none";
+    
+        //  Hide all other "interactive" sections.
+        document.querySelectorAll("section").forEach((section) => {
+          if (section.id !== "landing" && section.id !== "countdown") {
+            section.style.display = "none";
+          }
+        });
+
+        //  Show error message.
+        const element = document.querySelector("#landing .error");
+        element.style.display = "block";
+        element.innerText = errorMessage;
+
+        createScrollIndicator();
       }
 
-      //  Hide the title text.
-      document.querySelector("#landing .landing__text").style.display = "none";
-  
-      //  Hide all other "interactive" sections.
-      document.querySelectorAll("section").forEach((section) => {
-        if (section.id !== "landing" && section.id !== "countdown") {
-          section.style.display = "none";
-        }
-      });
-
-      //  Show error message.
-      document.querySelector("#landing .error").style.display = "block";      
+      //  Reveal the background image on the last page.
+      document.querySelector("#countdown .overlay").style.display = "none";
     },
   }
 })();

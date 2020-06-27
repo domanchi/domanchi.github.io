@@ -17,10 +17,11 @@ styles:
 <script src="/assets/js/wedding/browser.js"></script>
 <script>
   async function callback() {
-    if (await Browser.isCompatibleWithPresentation()) {
+    const compatibility = await Browser.getBrowserCompatibility();
+    if (compatibility.ok) {
       Animations.init();
     } else {
-      Animations.disable();
+      Animations.disable(compatibility.message);
     }
   }
 
