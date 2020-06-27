@@ -1,5 +1,6 @@
 //  Source: https://codepen.io/doriancami/pen/jEJvaV
 @import "modules/colors";
+@import "modules/util";
 
 #countdown {
     position: relative;
@@ -19,9 +20,8 @@
 }
 
 #countdown .title {
-    width: fit-content;
-    height: fit-content;
-
+    @include fit-content(width);
+    @include fit-content(height);
     position: absolute;
     top: 14vh;
     left: 0;
@@ -48,10 +48,10 @@
 }
 
 #countdown .timer {
+    @include fit-content(width);
+    height: 8.5ex;
     display: flex;
     position: absolute;
-    width: fit-content;
-    height: fit-content;
     
     margin: auto;
     top: 0;
@@ -178,3 +178,15 @@
     }
 }
 
+#countdown a {
+    width: 20%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10%;
+    margin: auto;
+    
+    font-size: xx-large;
+    font-family: MyFirstCrush, sans-serif;
+    background-color: #de484899;
+}

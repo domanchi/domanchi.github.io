@@ -1,5 +1,6 @@
 @import "modules/colors";
 @import "modules/layout";
+@import "modules/util";
 
 #landing .landing__text {
     position: absolute;
@@ -8,7 +9,7 @@
     margin-top: 3%;
 
     .text {
-        width: fit-content;
+        @include fit-content(width);
         padding: 0 2rem;
         background: rgba($backgroundDarkest, 0.3);
 

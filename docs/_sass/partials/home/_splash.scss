@@ -2,6 +2,7 @@
 @import "modules/colors";
 @import "modules/layout";
 @import "modules/overlay";
+@import "modules/util";
 
 #splash-page {
     background: url("../images/home/splash-page.jpg") no-repeat top scroll;
@@ -30,7 +31,7 @@
     }
 
     .banner .title {
-        width: fit-content;
+        @include fit-content(width);
         margin: auto;
 
         h3 {

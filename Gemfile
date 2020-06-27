@@ -4,7 +4,11 @@ gem "github-pages", group: :jekyll_plugins
 
 # If you have any plugins, put them here!
 # NOTE: Github Pages does not actively support any other plugins, besides
-#       its default set.
+#       its default set. https://pages.github.com/versions/
+# TODO: `autoprefixer` seems to be the way to go for cross-browser CSS compatibility.
+#       However, it isn't supported by github pages. We might be able to migrate to
+#       a TravisCI flow to build and deploy (https://docs.travis-ci.com/user/deployment/pages)
+#       if we wanted to use it.
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.6"
 end

@@ -1,10 +1,11 @@
 @import "modules/colors";
+@import "modules/util";
 
 $progressColor: $blueLightest;
 $transitionTime: 0.4s;
 
 .progress-bar-wrapper .title-wrapper {
-    width: fit-content;
+    @include fit-content(width);
     position: relative;
 
     .title {
