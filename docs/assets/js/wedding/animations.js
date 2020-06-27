@@ -3,14 +3,14 @@ const Animations = (() => {
   const Duration = {
     Title: viewport * 2,
     Book: {
-      Cover: 500,
-      Introduction: 500,
-      Meeting: 500,
-      DomesticExploration: 500,
-      Travels: 500,
-      Adventures: 500,
-      Final: 500,
-      Transition: 500,
+      Cover: 800,
+      Introduction: 800,
+      Meeting: 800,
+      DomesticExploration: 800,
+      Travels: 800,
+      Adventures: 800,
+      Final: 800,
+      Transition: 800,
     }
   };
 

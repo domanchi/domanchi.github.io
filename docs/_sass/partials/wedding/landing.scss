@@ -5,16 +5,16 @@
     position: absolute;
     margin-left: 2%;
 
-    margin-top: 4%;
+    margin-top: 3%;
 
     .text {
         width: fit-content;
         padding: 0 2rem;
-        background: rgba(25, 25, 25, 0.5);
+        background: rgba($backgroundDarkest, 0.3);
 
-        //  TODO: responsive font-size
-        font-size: 5vw;
-        font-family: MyFirstCrush;
+        font-size: 4vw;
+        font-family: Angellia;
+        line-height: 16vh;
     }
 
     .text.highlight {

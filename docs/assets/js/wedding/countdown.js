@@ -11,7 +11,13 @@
     minute: "numeric",
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     timeZoneName: "short",
-  }).format(eventTime);
+  }).format(eventTime).replace(
+    ":",
+    "<span>:</span>",
+  ).replace(
+    ",",
+    "<span>,</span>"
+  );
 
   let timer;
 

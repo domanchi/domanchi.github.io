@@ -133,6 +133,8 @@ $height: 80vh;
 
     p {
         font-size: 5vw;
+        line-height: 18vh;
+
         background-color: darkgoldenrod;
         margin-left: 2rem;
         margin-right: 2rem;
@@ -144,10 +146,15 @@ $height: 80vh;
 //  Text elements in the book.
 #book .book .page p,
 #book .book .page div {
-    font-family: "MyFirstCrush";
+    font-family: Angellia, cursive;
     font-size: 3vw;
     text-align: center;
+    line-height: 11vh;
     color: black;
+
+    span {
+        font-family: cursive;
+    }
 }
 
 #book .book .page p {
@@ -186,7 +193,7 @@ $height: 80vh;
 }
 
 #book .book .page:nth-child(even) p.right {
-    right: 3rem;
+    right: 2rem;
 }
 
 #book .book .page div.image {
@@ -245,9 +252,11 @@ $height: 80vh;
         width: 100%;
         left: 0;
         right: 0;
+        position: absolute;
+
+        font-family: MyFirstCrush, sans-serif;
         font-size: medium;
         font-weight: 700;
-        position: absolute;
     }
 
     .inner-border__text::before,
