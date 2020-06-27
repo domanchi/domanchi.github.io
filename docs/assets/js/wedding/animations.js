@@ -219,6 +219,31 @@ const Animations = (() => {
     });
 
     let originalOffset = null;
+    function resetTransform3D() {
+      //  This is a hack to get around the strange padding issue.
+      //  For some reason, even with `pinSpacing` off, when the end is reached,
+      //  #book is set with the `translate3d` attribute with the duration of the
+      //  animations as an offset. As a result, there's a giant padding at the
+      //  end of the presentation (that I can't seem to get rid of).
+      //
+      //  I've narrowed it down to the fact that we're putting the pin on #book
+      //  as compared to `createLandingScene`, but can't get any further than that.
+      //  Due to time constraints, I'm going to hack around this issue.
+      if (originalOffset === null) {
+        originalOffset = document.querySelector("#book").style.transform.match(/\d+px/)[0];
+      }
+
+      document.querySelector("#book").style.transform = "translate3d(0px, 0px, 0px)";
+    }
+
+    //  Due to the padding hack, we also need to handle the case where we refresh
+    //  on the last section. This logic will only run upon startup, and will emulate
+    //  the `onLeave` logic. We add a delay so there isn't a race condition with asset
+    //  loading (and therefore, it will always occur last).
+    if (window.scrollX > 0) {
+      setTimeout(resetTransform3D, 500);
+    }
+
     gsap.to(
       "#book .pages-container",
       {
@@ -231,17 +256,7 @@ const Animations = (() => {
           end: "right+=5% right-=50%",
 
           onLeave: () => {
-            //  This is a hack to get around the strange padding issue.
-            //  For some reason, even with `pinSpacing` off, when the end is reached,
-            //  #book is set with the `translate3d` attribute with the duration of the
-            //  animations as an offset. As a result, there's a giant padding at the
-            //  end of the presentation (that I can't seem to get rid of).
-            //
-            //  I've narrowed it down to the fact that we're putting the pin on #book
-            //  as compared to `createLandingScene`, but can't get any further than that.
-            //  Due to time constraints, I'm going to hack around this issue.
-            originalOffset = document.querySelector("#book").style.transform.match(/\d+px/)[0];
-            document.querySelector("#book").style.transform = "translate3d(0px, 0px, 0px)";
+            resetTransform3D();
           },
           onEnterBack: () => {
             //  Inverse of `onLeave`. Assumes always starts at left.
