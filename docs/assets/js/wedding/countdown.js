@@ -1,7 +1,8 @@
 (function() {
-  const eventTime = Date.parse("2020-07-04T10:00:00.000-07:00");
+  const eventTime = Date.parse("2020-07-04T17:30:00.000-07:00");
 
   //  Geolocate time.
+  //  It looks like this is based on system time, rather than IP geolocation.
   document.querySelector("#countdown .date").innerHTML = new Intl.DateTimeFormat("en", {
     weekday: "long",
     year: "numeric",
