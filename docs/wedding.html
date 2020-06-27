@@ -3,9 +3,32 @@ title: Wedding Announcement
 layout: default
 footer: false
 scripts:
-  - https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/ScrollTrigger.min.js
   - /assets/js/wedding/countdown.js
 styles:
   - /assets/css/wedding.css
 ---
+{% include wedding/landing.html %}
 {% include wedding/countdown.html %}
+
+<script src="/assets/js/wedding/animations.js"></script>
+<script src="/assets/js/wedding/browser.js"></script>
+<script>
+  async function callback() {
+    if (await Browser.isCompatibleWithPresentation()) {
+      Animations.init();
+    } else {
+      Animations.disable();
+    }
+  }
+
+  if (
+    document.readyState === "complete" ||
+    (document.readyState !== "loading" && !document.documentElement.doScroll)
+  ) {
+    callback();
+  } else {
+    document.addEventListener("DOMContentLoaded", callback);
+  }
+</script>

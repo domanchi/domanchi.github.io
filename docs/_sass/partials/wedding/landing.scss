@@ -1,0 +1,112 @@
+@import "modules/layout";
+
+#landing .landing__text {
+    position: absolute;
+    margin-left: 2%;
+
+    margin-top: 4%;
+
+    .text {
+        width: fit-content;
+        padding: 0 2rem;
+        background: rgba(25, 25, 25, 0.5);
+
+        //  TODO: responsive font-size
+        font-size: 5vw;
+        font-family: MyFirstCrush;
+    }
+
+    .text.highlight {
+        color: wheat;
+        background: unset;
+        padding: unset;
+    }
+
+    .text.indent {
+        position: absolute;
+        left: 9rem;
+    }
+}
+
+#landing .landing__background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: -1;
+
+    .parallax__sky {
+        background-image: url("../images/wedding/0-landing-clouds.webp");
+        background-size: contain;
+        height: 74%;
+    }
+
+    .parallax__ground {
+        width: 100%;
+        height: 47%;
+        position: absolute;
+        bottom: 0;
+        background-image: url("../images/wedding/0-landing-grass.webp");
+        background-size: contain;
+    }
+
+    .parallax__overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+
+        background: linear-gradient(
+            to top left, 
+            rgba(0,0, 0, 0.8), 
+            rgba(0,0, 0, 0.7), 
+            rgba(0, 0, 0, 0.3), 
+            transparent
+        );
+    }
+}
+
+#landing .scroll-indicator {
+    width: 5%;
+    height: fit-content;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    
+    //  This is controlled by Javascript.
+    opacity: 0;
+
+    img {
+        width: 80%;
+    }
+
+    div {
+        color: wheat;
+        font-weight: 700;
+        font-size: large;
+        font-family: MyFirstCrush;
+    }
+}
+
+#landing .error {
+    width: 70%;
+    height: fit-content;
+    @include centerVerticalAndHorizontal();
+
+    padding: 10px;
+    background-color: rgba(230, 0, 0, 0.4);
+    border-radius: 5px;
+    color: antiquewhite;
+    font-size: 2rem;
+    text-align: center;
+
+    //  Javascript will be responsible for displaying this when needed.
+    display: none;
+
+    z-index: 1;
+}
